@@ -23,7 +23,6 @@ export default {
         plugin: 'tailwind-block-classes',
         classes: '',
         css: '',
-        selector: `sb-${this.blockId}_SELECTOR_`,
       }
     },
     pluginCreated () {
@@ -45,8 +44,8 @@ export default {
     },
     generateStyles: debounce(async function () {
       let css = ''
-      const selector = this.model.selector || `sb-${this.blockId}_SELECTOR_`
       if (this.uno && this.model.classes) {
+        const selector = `sb-${this.blockId}_SELECTOR_`
         this.uno.setConfig({
           ...this.uno.config,
           shortcuts: {
